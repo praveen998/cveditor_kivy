@@ -13,6 +13,6 @@ class MyApp(MDApp):
         sm.add_widget(SettingsScreen(name="settings"))
         sm.add_widget(FileChooserScreen(name="filechooser"))
         return sm
-
+    
 if __name__ == '__main__':
     MyApp().run()
