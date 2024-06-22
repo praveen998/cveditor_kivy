@@ -73,17 +73,21 @@ def pixmap_to_image(pixmap):
     return image
 
 
-
 #convert pdf to image-----------------------------------------------------------------------------
 def pdf_to_image(pdf_path):
-    print(pdf_path)
+    dpi=150
     output_folder=os.getcwd()+'\\output'
-    pdf_document=fitz.open(pdf_path)
 
+    if not os.path.exists(output_folder):
+        os.makedirs(output_folder)
+        
+    pdf_document=fitz.open(pdf_path)
     for page_number in range(len(pdf_document)):
         page = pdf_document.load_page(page_number)
-
-        pix = page.get_pixmap()
+        x=dpi/72
+        y=dpi/72
+        mat=fitz.Matrix(x,y)
+        pix = page.get_pixmap(matrix=mat)
          # Save the image
         image_path = os.path.join(output_folder, f"outputimage_{page_number + 1}.png")
         pix.save(image_path)

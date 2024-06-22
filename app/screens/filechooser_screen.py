@@ -3,10 +3,10 @@ from kivy.uix.boxlayout import BoxLayout
 
 from kivy.uix.button import Button
 from kivymd.uix.filemanager import MDFileManager
-
+from kivymd.uix.label import MDLabel
 from kivymd.uix.screen import MDScreen
 from kivy.uix.image import Image
-
+from kivy.metrics import dp
 
 from app.services.main import file_to_png,convert_to_frames
 
@@ -16,8 +16,9 @@ class FileChooserScreen(MDScreen):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.name = "filechooser"
-        self.layout=  BoxLayout(orientation='vertical',spacing=10,padding=10)
-        
+        self.layout=  BoxLayout(orientation='vertical',padding=30,spacing=20)
+     
+      
         self.file_manager= MDFileManager(
             exit_manager= self.exit_manager,
             select_path= self.select_path,
@@ -31,7 +32,8 @@ class FileChooserScreen(MDScreen):
         #layout.add_widget(path_label)
         # Button to open file manager
 
-        self.choose_button = Button(text="Choose File", size_hint_y=None, height=40,
+        
+        self.choose_button = Button(text="Choose File",pos_hint={'center_x':0.5},size_hint=(None,None),size=(dp(500),dp(100)),
                              on_release=self.file_manager_open)   
         
 
@@ -54,6 +56,7 @@ class FileChooserScreen(MDScreen):
 
     def exit_manager(self, *args):
         self.file_manager.close()
+       
         # Function to handle closing the file manager
         #self.manager.current="Home"
 

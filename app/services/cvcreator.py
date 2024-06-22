@@ -27,7 +27,7 @@ def convert_frame_to_pdf(frames):
 
 
 def frame_creator(width):
-    image = np.ones((150,width,3), dtype=np.uint8) * 255
+    image = np.ones((220,width,3), dtype=np.uint8) * 255
     return image
 
 
@@ -51,8 +51,8 @@ def logo_overlap(out):
     path=os.getcwd()+'\\app\\assests\\images\\logo2.png'
     #path='logo2.png'
     logo = cv2.imread(path)
-    logo = cv2.resize(logo,(130,130))
-    x=10
+    logo = cv2.resize(logo,(200,200))
+    x=20
     y=10
     out[y:y+logo.shape[0],x:x+logo.shape[1]]=logo
     text3="Contact:"
@@ -65,16 +65,16 @@ def logo_overlap(out):
 
     # Define the font, font scale, and color
     font = cv2.FONT_HERSHEY_SIMPLEX
-    font_scale = 0.5
+    font_scale = 0.7
     color = (138,83,7)  # Black color in BGR
 
     # Define the thickness of the text
     thickness = 1
-    cv2.putText(out, text3, (x+130,y+40), font, font_scale, color, thickness, cv2.LINE_AA)
-    cv2.putText(out, text1, (x+150,y+60), font, font_scale, color, thickness, cv2.LINE_AA)
-    cv2.putText(out, text2, (x+150,y+80), font, font_scale, color, thickness, cv2.LINE_AA)
-    cv2.putText(out, email, (x+150,y+100), font, font_scale, color, thickness, cv2.LINE_AA)
-    cv2.putText(out, website, (x+150,y+120), font, font_scale, color, thickness, cv2.LINE_AA)
+    cv2.putText(out, text3, (x+220,y+40), font, font_scale, color, thickness, cv2.LINE_AA)
+    cv2.putText(out, text1, (x+230,y+65), font, font_scale, color, thickness, cv2.LINE_AA)
+    cv2.putText(out, text2, (x+230,y+90), font, font_scale, color, thickness, cv2.LINE_AA)
+    cv2.putText(out, email, (x+230,y+115), font, font_scale, color, thickness, cv2.LINE_AA)
+    cv2.putText(out, website, (x+230,y+140), font, font_scale, color, thickness, cv2.LINE_AA)
     return out
 # Create a black image (500x500 pixels with 3 color channels (BGR))
 image = np.ones((2300,1600, 3), dtype=np.uint8) * 255

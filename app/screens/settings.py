@@ -4,6 +4,7 @@ from kivymd.uix.button import MDRaisedButton,MDRectangleFlatButton
 from kivymd.uix.filemanager import MDFileManager
 from kivymd.uix.label import MDLabel
 from kivymd.uix.textfield import MDTextField
+from kivy.app import App
 
 
 class SettingsScreen(MDScreen):
@@ -29,29 +30,29 @@ class SettingsScreen(MDScreen):
         content.add_widget(self.path_field)
 
         # Button to open file manager
-        choose_button = MDRaisedButton(text="Choose Path", on_release=self.show_file_chooser)
-        content.add_widget(choose_button)
+        #choose_button = MDRaisedButton(text="Choose Path", on_release=self.show_file_chooser)
+        #content.add_widget(choose_button)
         return content
 
     def switch_to_main(self,instance):
         self.manager.current="Home"
 
+    '''
     def show_file_chooser(self):
         from kivymd.uix.filemanager import MDFileManager
-
         manager=MDFileManager(
             exit_manager=self.exit_manager,
             select_path=self.select_path
         )
         manager.show('/')
-    
+      
     def exit_manager(self, *args):
         # Function to handle closing the file manager
-        pass
+
 
     def select_path(self, path):
         # Function to handle the selected path
         self.path_field.text = path  # Update the text field with the selected path
-
+    '''
 
        
